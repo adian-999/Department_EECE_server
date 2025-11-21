@@ -37,7 +37,7 @@ const corsOptions = {
   origin: ["https://department-cc5bf.web.app",
   "https://department-cc5bf.firebaseapp.com",
   "http://localhost:5173",
-  "https://department-server-k42vzvkss-adian999s-projects.vercel.app"],
+  "https://department-server-k42vzvkss-adian999s-projects.vercel.app","https://department-eece-server.onrender.com"],
 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
