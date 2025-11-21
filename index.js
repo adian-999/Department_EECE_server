@@ -8,9 +8,42 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 
-app.use(cors('https://department-cc5bf.web.app',
-  'http://localhost:5173',
-  'https://department-cc5bf.firebaseapp.com'));
+// const allowedOrigins = [
+//   "https://department-cc5bf.web.app",
+//   "https://department-cc5bf.firebaseapp.com",
+//   "http://localhost:5173",
+// ];
+
+// app.use(cors({
+//   origin: allowedOrigins,
+//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//   allowedHeaders: ["Content-Type", "Authorization"],
+//   credentials: true,
+// }));
+
+// app.use(cors({
+//   origin: [
+  //   "https://department-cc5bf.web.app",
+  // "https://department-cc5bf.firebaseapp.com",
+  // "http://localhost:5173",
+  // "https://department-server-k42vzvkss-adian999s-projects.vercel.app"
+//   ],
+//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//   allowedHeaders: ["Content-Type", "Authorization"],
+
+// }))
+
+const corsOptions = {
+  origin: ["https://department-cc5bf.web.app",
+  "https://department-cc5bf.firebaseapp.com",
+  "http://localhost:5173",
+  "https://department-server-k42vzvkss-adian999s-projects.vercel.app"],
+
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+};
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 
@@ -36,7 +69,7 @@ async function run() {
     // await client.connect();
     // Send a ping to confirm a successful connection
     // await client.db("admin").command({ ping: 1 });
-    // console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
 
     // alumni realted api------
     const alumniCollection = client.db('Department').collection('alumni');
